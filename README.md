@@ -324,7 +324,7 @@ without calling `.listen`) and follows the **Single Responsibility Principle**:
 
 ---
 
-### `data/items.js` 📊  
+### `data/items.db` 📊  
 This file holds our data. In a real application, this would likely be replaced  
 by a database or ORM model. In our simple project, we use it to store a list  
 of items in memory (for example, it could export an array of item objects).  
@@ -341,12 +341,12 @@ feature/domain. In our example, we have one domain: **items**.
 We created multiple files for the items feature, each handling a specific  
 layer of the application logic:  
 
-- **`itemsHandler.js`** 🛣️  
+- **`Handler.js`** 🛣️  
   This is the routes handler (or route definitions).  
   It’s a Fastify plugin that declares the actual routes/endpoints for the  
   items API. It maps URL paths + HTTP methods to controllers and schemas.  
 
-- **`itemsController.js`** 🎛️  
+- **`Controller.js`** 🎛️  
   Contains functions that handle incoming requests for items.  
   Controllers act as intermediaries between the HTTP layer and the business  
   logic. Each function typically corresponds to an endpoint  
@@ -355,7 +355,7 @@ layer of the application logic:
   The controller parses request data, calls the appropriate service function,  
   and formats the response (or handles errors).  
 
-- **`itemsServices.js`** 🧩  
+- **`Services.js`** 🧩  
   Holds the business logic for items. Services know how to manipulate data,  
   independent of HTTP or Fastify.  
   Example: find item by ID, add a new item, delete an item.  
@@ -363,7 +363,7 @@ layer of the application logic:
   This separation makes testing/maintenance easier – later you can replace  
   the in-memory service with DB calls without changing controllers.  
 
-- **`itemsSchema.js`** 📐  
+- **`Schema.js`** 📐  
   Defines the validation schemas for our routes (JSON Schema format).  
   Fastify uses them for:  
   - validating incoming data  
@@ -414,7 +414,7 @@ Each file/module has a clear responsibility. Routes ≠ logic ≠ data.
 Easier to navigate and maintain.  
 
 - **Encapsulation and Reusability**:  
-Route plugins (like `itemsHandler.js`) can be reused under different prefixes  
+Route plugins (like `Handler.js`) can be reused under different prefixes  
 (e.g. for versioning). Services can be reused in other parts of the app.  
 
 - **Clarity**:  
