@@ -276,12 +276,12 @@ fastify-api/
 ├── app.js
 ├── server.js
 ├── data/
-│   └── items.js
+│   └── items.db
 ├── routes/
-│   ├── itemsHandler.js
-│   ├── itemsController.js
-│   ├── itemsSchema.js
-│   └── itemsServices.js
+│   ├── Handler.js
+│   ├── Controller.js
+│   ├── Schema.js
+│   └── Services.js
 ├── test.http
 ├── package.json
 ├── package-lock.json
